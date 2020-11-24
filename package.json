@@ -1,0 +1,35 @@
+{
+  "title": "Material demo",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "description": "https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/buttons/DisableElevation.js",
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "@react-pdf/renderer": "^1.6.12",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-pdf": "^5.0.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "name": "material-demo-forked",
+  "version": "0.0.32",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
