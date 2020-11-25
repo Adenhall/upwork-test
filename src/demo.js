@@ -9,40 +9,42 @@ export default function Demo() {
   const [showPDF, setShowPDF] = useState(false);
   const uint8View = new Uint8Array(_base64ToArrayBuffer(base64string));
   const onOpenPDF = () => {
-    // console.log(uint8View);
     setShowPDF(!showPDF);
   };
+
+  const myDoc = (
+    <Document
+      renderMode="svg"
+      file={{
+        data: uint8View,
+      }}
+      onLoadSuccess={async (pdf) => {
+        console.log(pdf);
+      }}
+      onPassword={(updatePass) => {
+        const password = "123456";
+        updatePass(password);
+      }}
+    >
+      <Page pageNumber={1} />
+    </Document>
+  );
+
   return (
     <>
       <Button variant="contained" color="primary" onClick={() => onOpenPDF()}>
         Open PDF
       </Button>
-      {showPDF ? (
-        <Document
-          renderMode="svg"
-          file={{
-            data: uint8View,
-          }}
-          onLoadSuccess={async (pdf) => {
-            console.log(pdf);
-          }}
-          onPassword={(updatePass) => {
-            const password = "123456";
-            updatePass(password);
-          }}
-        >
-          <Page pageNumber={1} />
-        </Document>
-      ) : null}
+      {showPDF ? myDoc : null}
     </>
   );
 }
 
 function _base64ToArrayBuffer(base64) {
-  var binary_string = window.atob(base64);
-  var len = binary_string.length;
-  var bytes = new Uint8Array(len);
-  for (var i = 0; i < len; i++) {
+  const binary_string = window.atob(base64);
+  const len = binary_string.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
     bytes[i] = binary_string.charCodeAt(i);
   }
   return bytes.buffer;
